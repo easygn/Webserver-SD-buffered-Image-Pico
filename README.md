@@ -24,4 +24,11 @@ Ex) Image webpage loading performance of about 32KB based old micro SD
 ### Optimazed support device :
  
  Raspberry Pi Pico RP2040 + Wiznet HAT W5100S
- 
+
+
+
+### Based board manager library :
+
+ https://github.com/earlephilhower/arduino-pico
+
+

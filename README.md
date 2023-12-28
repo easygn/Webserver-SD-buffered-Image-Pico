@@ -42,5 +42,6 @@ Ex) Image webpage loading performance of about 32KB based old micro SD
  - ImgBB.ino : Each device running with it's own a different size
 
  - pins_arduino.h : When the SD card is connected to another SPI,
-   
-          replace it in /variants/rpipico in the BoardManager lib folder.
+
+  replace it in /variants/rpipico in the BoardManager lib folder.
+

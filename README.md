@@ -11,9 +11,9 @@ https://startingelectronics.org/tutorials/arduino/ethernet-shield-web-server-tut
 
 Ex) Image webpage loading performance of about 32KB based old micro SD
  
- Previous Original code - ± 11 sec
+ - Previous Original code - ± 11 sec
  
- This buffered code - ± 1.5 sec
+ - This buffered code - ± 1.5 sec
 
 
 

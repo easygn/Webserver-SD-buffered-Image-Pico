@@ -1,6 +1,9 @@
 # Webserver-SD-buffered-Image-pico
 
 
+![Before](/images/Screenshot_2023-05-15-19-50-04_3-1.png)
+
+
 ### Original Based code : 
 
 https://startingelectronics.org/tutorials/arduino/ethernet-shield-web-server-tutorial/SD-card-web-server-image/

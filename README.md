@@ -37,9 +37,9 @@ Ex) Image webpage loading performance of about 32KB based old micro SD
 
 ### About files
 
- - ImgBF.ino : When Running, sync to same size as W5100s with 2KiB memory per socket.
+ - ImgBF.ino : When Running, sync to same size as W5100s with 2KiB memory per socket. (Released)
 
- - ImgBB.ino : Each device running with it's own a different size
+ - ImgBB.ino : Each device running with it's own a different size (Nightly : slow yet)
 
  - pins_arduino.h : When the SD card is connected to another SPI,
 

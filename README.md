@@ -13,7 +13,7 @@ https://startingelectronics.org/tutorials/arduino/ethernet-shield-web-server-tut
 
 ### Added buffer accelerate code in Webserver SD Image for Arduino IDE
 
-Ex) Image webpage loading performance of about 32KB based old micro SD
+Ex) Image webpage loading performance of about 39KB size in old microSD card
  
  - Previous Original code - ± 11 sec  (per One Byte fileLoad, IO bottleneck)
  

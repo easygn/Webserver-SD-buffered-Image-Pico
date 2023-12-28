@@ -1,4 +1,4 @@
-# Webserver-SD-buffered-Image-pico-w5100s
+# Webserver-SD-buffered-Image-pico
 
 
 ### Original Based code : 

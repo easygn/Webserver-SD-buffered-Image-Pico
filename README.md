@@ -1,2 +1,9 @@
 # Webserver-SD-buffered-Image-pico-w5100s
-Added buffer accelerate code in Original WS SD Image for Pi Pico W5100S Arduino IDE
+
+Based 
+
+Added buffer accelerate code in Webserver SD Image for Arduino IDE
+
+Optimazed support device :
+ Raspberry Pi Pico RP2040 + Wiznet HAT W5100S
+ 

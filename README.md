@@ -7,6 +7,6 @@ https://startingelectronics.org/tutorials/arduino/ethernet-shield-web-server-tut
 
 Added buffer accelerate code in Webserver SD Image for Arduino IDE
 
-Optimazed support device :
+### Optimazed support device :
  Raspberry Pi Pico RP2040 + Wiznet HAT W5100S
  

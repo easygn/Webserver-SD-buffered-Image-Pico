@@ -23,7 +23,7 @@ Ex) Image webpage loading performance of about 39KB size in old microSD card
 
 ### Optimazed support device
  
- Raspberry Pi Pico RP2040 + Wiznet HAT W5100S
+ Raspberry Pi Pico RP2040 with Wiznet HAT W5100S
 
 # 
 

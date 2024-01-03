@@ -41,7 +41,7 @@ Ex) Image webpage loading performance of about 39KB size in old microSD card
 
  - ImgBB.ino : Each device running with it's own a different memory size (Nightly :
 
-_____Now, same speed as Release over 100KB~)
+     Now, same speed as Release over 100KB~)
 
  - pins_arduino.h : When the SD card is connected to another SPI,
 

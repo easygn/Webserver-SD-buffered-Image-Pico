@@ -172,13 +172,13 @@ void loop()
                     }
                     if (webFile) {                    
 //                      while(webFile.available()) {
-                        unsigned short int fSz
-                          = (unsigned short int)webFile.available();
+                        unsigned long int rmFsz
+                          = (unsigned long int)webFile.available();
                         unsigned char fBuf[F_BUF_SZ];
                         // unsigned short int wSz, av_wSz;
-                        while(fSz) {
-                          if (fSz > F_BUF_SZ) fSz = F_BUF_SZ;
-                          webFile.read(fBuf, fSz); /*
+                        while(rmFsz) {
+                          if (rmFsz > F_BUF_SZ) rmFsz = F_BUF_SZ;
+                          webFile.read(fBuf, rmFsz); /*
                           wSz = 0;
                           while (fSz > wSz) {
                             av_wSz = fSz-wSz;
@@ -186,8 +186,8 @@ void loop()
                                         WZ_BUF_SZ : av_wSz); // send buffered page to client by Easygn
                             wSz += WZ_BUF_SZ;
                           } */
-                          client.write(fBuf, fSz);    // send buffered page to client by Easygn
-                          fSz = (unsigned short int)webFile.available();
+                          client.write(fBuf, rmFsz);    // send buffered page to client by Easygn
+                          rmFsz = (unsigned long int)webFile.available();
                           //client.write(webFile.read()); // send web page to client
                         }  
                         webFile.close();

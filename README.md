@@ -17,11 +17,13 @@ Ex) Image webpage loading performance of about 39KB size in old microSD card
  
  - Previous Original code - ± 11 sec  (per One Byte fileLoad, IO bottleneck)
  
- - This buffered code - ± 1.5 sec (per 2KiByte fileLoad in ImgBF.ino)
+ - This buffered code - ± 1.5 sec (per 2KiByte fileLoad in ImgBF.ino
+
+    V1.0.1 average transfer speed was ±30KB/s)
 
 # 
 
-### Optimazed support device
+### Target device
  
  Raspberry Pi Pico RP2040 with Wiznet HAT W5100S
 
@@ -41,7 +43,7 @@ Ex) Image webpage loading performance of about 39KB size in old microSD card
 
  - ImgBB.ino : Each device running with it's own a different memory size (Nightly :
 
-    Now, same speed as Release over 100KB~)
+     V1.0.1 : same speed as Release over 100KB~)
 
  - pins_arduino.h : When the SD card is connected to another SPI,
 

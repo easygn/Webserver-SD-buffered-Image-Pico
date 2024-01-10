@@ -68,8 +68,13 @@
 
 // size of buffer used to capture HTTP requests
 #define REQ_BUF_SZ   20
-#define F_BUF_SZ    8192  // 16384 +0.5s  4096,8192 +0.1~.2s  overhead canceled   
-#define WZ_BUF_SZ   2048  // for File, W5100s buffer by Easygn
+#define F_BUF_SZ    4096  // 16384 +0.5s  4096,8192 +0.1~.2s  overhead canceled   
+#define WZ_BUF_SZ   2048  // 2048 W5100s default buffer by Easygn
+
+// If MAX_SOCK_NUM is set to fewer than the chip's maximum, uncommenting
+// this will use larger buffers within the Wiznet chip. 
+//#define ETHERNET_LARGE_BUFFERS
+
 
 // MAC address from Ethernet shield sticker under board
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
@@ -92,7 +97,7 @@ void setup()
     
     // initialize SD card
     Serial.println("Initializing SD card...");
-    if (!SD.begin(Pin_CSn_SD, 655360, SPI1)) {  // Added 2023
+    if (!SD.begin(Pin_CSn_SD, SPI_QUARTER_SPEED, SPI1)) {  // Added 2023, 2nd param : Open limit 655k to CPU Clk/Q , 2024 by E.gn
         Serial.println("ERROR - SD card initialization failed!");
         return;    // init failed
     }
@@ -172,22 +177,22 @@ void loop()
                     }
                     if (webFile) {                    
 //                      while(webFile.available()) {
-                        unsigned long int rmFsz
+                        unsigned long int freeFln
                           = (unsigned long int)webFile.available();
                         unsigned char fBuf[F_BUF_SZ];
-                        unsigned long int WZsz, availWsz;
-                        while(rmFsz) {
-                          if (rmFsz > F_BUF_SZ) rmFsz = F_BUF_SZ;
-                          webFile.read(fBuf, rmFsz);
-                          WZsz = 0;
-                          while (rmFsz > WZsz) {
-                            availWsz = rmFsz-WZsz;
-                            client.write(&fBuf[0+WZsz], availWsz > WZ_BUF_SZ ? 
-                                        WZ_BUF_SZ : availWsz); // send buffered page to client by Easygn
-                            WZsz += WZ_BUF_SZ;
+                        unsigned long int WBCur, freeWln;
+                        while(freeFln) {
+                          if (freeFln > F_BUF_SZ) freeFln = F_BUF_SZ;
+                          webFile.read(fBuf, freeFln);
+                          WBCur = 0;
+                          while (freeFln > WBCur) {
+                            freeWln = freeFln-WBCur;
+                            client.write(&fBuf[0+WBCur], freeWln > WZ_BUF_SZ ? 
+                                        WZ_BUF_SZ : freeWln); // send buffered page to client by E.gn
+                            WBCur += WZ_BUF_SZ;
                           }
-                          //client.write(fBuf, rmFsz);    // send buffered page to client by Easygn
-                          rmFsz = (unsigned long int)webFile.available();
+                          //client.write(fBuf, freeFln);    // send buffered page to client by Easygn
+                          freeFln = (unsigned long int)webFile.available();
                           //client.write(webFile.read()); // send web page to client
                         }  
                         webFile.close();

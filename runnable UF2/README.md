@@ -8,7 +8,7 @@ https://www.raspberrypi.com/documentation/microcontrollers/images/MicroPython-64
 
 Compile Profile 
 
-V1.0.3 : CPU 120Mhz, Flash Sketch 1MB / FS 1MB, small -Os 
+BF_RC2 : CPU 120Mhz, Flash Sketch 1MB / FS 1MB, small -Os 
 
 (BB also on the same day)
 

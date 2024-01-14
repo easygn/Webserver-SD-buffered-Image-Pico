@@ -6,7 +6,7 @@ https://www.raspberrypi.com/documentation/microcontrollers/images/MicroPython-64
 
 #
 
-### Last Compiled Profile 
+### Last compiled Profile 
 
 BF : CPU unknown(100 or 133)Mhz, Flash Sketch 1MB / FS 1MB, small -Os 
 

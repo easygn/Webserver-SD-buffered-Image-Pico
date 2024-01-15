@@ -1,1 +1,1 @@
-Modified W5100s core library V1.2 ~
+Modified Wiznet's core library V1.2 ~

@@ -426,9 +426,17 @@ uint16_t W5100Class::write(uint16_t addr, const uint8_t *buf, uint16_t len)
 			setSS();
 	//		SPI.transfer(0xF0);
 	//		SPI.transfer(addr >> 8);
-			SPI.transfer16( (0xF0 << 8)+ (addr >> 8) );	  // Modified 8 to 16bit x2 wider bandwidth
+		//	SPI.transfer16( (0xF0 << 8)+ (addr >> 8) );	  // Modified 8 to 16bit x2 wider bandwidth
 	//		SPI.transfer(addr & 0xFF);
-			SPI.transfer16( ((addr & 0xFF) << 8) + buf[i] );	// 15 Jan 202F, by Easygn
+		//	SPI.transfer16( ((addr & 0xFF) << 8) + buf[i] );  // V1.2.0 _ 15 Jan,
+
+			cmd[0] = 0xF0;
+			cmd[1] = addr >> 8;
+			cmd[2] = addr & 0xFF;			//
+			cmd[3] = buf[i];			//	Array transfer
+			
+			SPI.transfer(&cmd[0], &ret, 4);		//	V1.3.0 _ 16 Jan 202F, by Easygn
+
 			addr++;
 	//		SPI.transfer(buf[i]);
 			resetSS();

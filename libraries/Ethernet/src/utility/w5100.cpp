@@ -440,14 +440,14 @@ uint16_t W5100Class::write(uint16_t addr, const uint8_t *buf, uint16_t len)
 		SPI.transfer(&cmd[0], &ret, 3);
 		
 		while (bCur < bCurB) {
-			ret = 0;  SPI.transfer(&buf[bCur], &ret, SPI_FIFO_LIMIT);	bCur += SPI_FIFO_LIMIT;
-			ret = 0;  SPI.transfer(&buf[bCur], &ret, SPI_FIFO_LIMIT);	bCur += SPI_FIFO_LIMIT;
-			ret = 0;  SPI.transfer(&buf[bCur], &ret, SPI_FIFO_LIMIT);	bCur += SPI_FIFO_LIMIT;
+		  ret = 0;  SPI.transfer(&buf[bCur], &ret, SPI_FIFO_LIMIT);  bCur += SPI_FIFO_LIMIT;
+		  ret = 0;  SPI.transfer(&buf[bCur], &ret, SPI_FIFO_LIMIT);  bCur += SPI_FIFO_LIMIT;
+		  ret = 0;  SPI.transfer(&buf[bCur], &ret, SPI_FIFO_LIMIT);  bCur += SPI_FIFO_LIMIT;
 		}
 		while (bCur < bCurM) {
-			ret = 0;
-			SPI.transfer(&buf[bCur], &ret, SPI_FIFO_LIMIT);
-			bCur += SPI_FIFO_LIMIT;
+		  ret = 0;
+		  SPI.transfer(&buf[bCur], &ret, SPI_FIFO_LIMIT);
+		  bCur += SPI_FIFO_LIMIT;
 		}
 		SPI.transfer(&buf[bCur], &ret, len - bCur);
 		addr += len;

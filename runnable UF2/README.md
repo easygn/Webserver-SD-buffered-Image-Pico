@@ -14,7 +14,7 @@ BB, BF_RC2, BFv2 : CPU 120Mhz, Flash Sketch 1MB / FS 1MB, small -Os
 
 #
 
-### V2.0 difference
+### V2.0 ~ options
 
 BFv2_8L : SPI FiFo 8byte block - fast, stable
 

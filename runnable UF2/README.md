@@ -20,3 +20,5 @@ BFv2_8L : SPI FiFo 8byte block - fast, stable
 
 BFv2_12L : " per 12byte block - 5~10% more faster, unstable
 
+BFv2MT : V2.2 Support Multithread (FIFO unified into 8L)
+

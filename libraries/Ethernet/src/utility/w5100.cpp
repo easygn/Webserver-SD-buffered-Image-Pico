@@ -418,7 +418,8 @@ W5100Linkstatus W5100Class::getLinkStatus()
 }
 
 
-#define SPI_FIFO_LIMIT 8	// 12 faster but unstable 
+#define SPI_FIFO_LIMIT 8	// 10 faster but unstable
+#define SPI_FIFO_BLOCK 48   // LIMIT x 6 repeat loop
 
 uint16_t W5100Class::write(uint16_t addr, const uint8_t *buf, uint16_t len)
 {
@@ -427,7 +428,8 @@ uint16_t W5100Class::write(uint16_t addr, const uint8_t *buf, uint16_t len)
 	if (chip == 51 || chip == 50) {
 		
 		// ======== 3Bytes header + Block buffer transfer ========
-		uint16_t ret;
+	//	uint16_t ret;
+		uint16_t ret[7];
 	//	uint16_t ffL = len;
 		uint16_t bCur = 0;
 		uint16_t bCurB = len > SPI_FIFO_BLOCK ? len - SPI_FIFO_BLOCK : 0;
@@ -440,16 +442,20 @@ uint16_t W5100Class::write(uint16_t addr, const uint8_t *buf, uint16_t len)
 		SPI.transfer(&cmd[0], &ret, 3);
 		
 		while (bCur < bCurB) {
-		  ret = 0;  SPI.transfer(&buf[bCur], &ret, SPI_FIFO_LIMIT);  bCur += SPI_FIFO_LIMIT;
-		  ret = 0;  SPI.transfer(&buf[bCur], &ret, SPI_FIFO_LIMIT);  bCur += SPI_FIFO_LIMIT;
-		  ret = 0;  SPI.transfer(&buf[bCur], &ret, SPI_FIFO_LIMIT);  bCur += SPI_FIFO_LIMIT;
+		    memset(ret, 0, 6);
+			SPI.transfer(&buf[bCur], &ret[0], SPI_FIFO_LIMIT);	bCur += SPI_FIFO_LIMIT;
+			SPI.transfer(&buf[bCur], &ret[1], SPI_FIFO_LIMIT);	bCur += SPI_FIFO_LIMIT;
+			SPI.transfer(&buf[bCur], &ret[2], SPI_FIFO_LIMIT);	bCur += SPI_FIFO_LIMIT;
+			SPI.transfer(&buf[bCur], &ret[3], SPI_FIFO_LIMIT);	bCur += SPI_FIFO_LIMIT;
+			SPI.transfer(&buf[bCur], &ret[4], SPI_FIFO_LIMIT);	bCur += SPI_FIFO_LIMIT;
+			SPI.transfer(&buf[bCur], &ret[5], SPI_FIFO_LIMIT);	bCur += SPI_FIFO_LIMIT;
 		}
 		while (bCur < bCurM) {
-		  ret = 0;
-		  SPI.transfer(&buf[bCur], &ret, SPI_FIFO_LIMIT);
-		  bCur += SPI_FIFO_LIMIT;
+			ret[0] = 0;
+			SPI.transfer(&buf[bCur], &ret[0], SPI_FIFO_LIMIT);
+			bCur += SPI_FIFO_LIMIT;
 		}
-		SPI.transfer(&buf[bCur], &ret, len - bCur);
+		SPI.transfer(&buf[bCur], &ret, (len - bCur));
 		addr += len;
 
 		/*			
@@ -459,12 +465,12 @@ uint16_t W5100Class::write(uint16_t addr, const uint8_t *buf, uint16_t len)
 			SPI.transfer(&buf[bCur], &ret, ffL);
 			bCur += ffL;
 			addr += ffL;
-			ffL = len - bCur;    // =====
+			ffL = len - bCur;		// =====
 		}*/
 		resetSS();			
 		
 		// ==================== V2.0.1 _ 19 Jan 202F, by Easygn ===
-		
+
 				
 	/*	for (uint16_t i=0; i<len; i++) {
 			setSS();

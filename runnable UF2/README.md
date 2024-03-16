@@ -12,6 +12,8 @@ BF : CPU (forgot : 100 or 133)Mhz, Flash Sketch 1MB / FS 1MB, small -Os
 
 BB, BF_RC2, BFv2 : CPU 120Mhz, Flash Sketch 1MB / FS 1MB, small -Os 
 
+BFv2MT_16 : ... + Stack Protector Enable
+
 #
 
 ### V2.0 ~ options

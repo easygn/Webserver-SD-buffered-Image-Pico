@@ -418,8 +418,8 @@ W5100Linkstatus W5100Class::getLinkStatus()
 }
 
 
-#define SPI_FIFO_LIMIT 8	// 10 faster but unstable
-#define SPI_FIFO_BLOCK 48   // LIMIT x 6 repeat loop
+#define SPI_FIFO_LIMIT 16   // 10 faster but unstable
+#define SPI_FIFO_BLOCK 96   // LIMIT x 6 repeat loop
 
 uint16_t W5100Class::write(uint16_t addr, const uint8_t *buf, uint16_t len)
 {

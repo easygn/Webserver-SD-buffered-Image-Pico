@@ -14,6 +14,8 @@ BB, BF_RC2, BFv2 : CPU 120Mhz, Flash Sketch 1MB / FS 1MB, small -Os
 
 BFv2MT_16 : ... + Stack Protector Enable
 
+BFv2Fn : CPU 100Mhz ( SD,Eth SPI 12.5Mhz ), others same as above
+
 #
 
 ### V2.0 ~ options

@@ -69,7 +69,7 @@
 
 // size of buffer used to capture HTTP requests
 #define REQ_BUF_SZ   20
-#define F_BUF_SZ    2000 // 16384 +0.5s  4096,8192 +0.1~.2s  overhead canceled
+#define F_BUF_SZ    1968 // 16384 +0.5s  4096,8192 +0.1~.2s  overhead canceled
 //#define WZ_BUF_SZ   2048 // for File, W5100s buffer by Easygn       
                           
 
@@ -100,21 +100,6 @@ void setup()
    // digitalWrite(10, HIGH);
     
     Serial.begin(9600);       // for debugging
-    
-    // initialize SD card
-    Serial.println("Initializing SD card...");
-    if (!SD.begin(Pin_CSn_SD, SPI_QUARTER_SPEED, SPI1)) {  // Added 2023
-        Serial.println("ERROR - SD card initialization failed!");
-        return;    // init failed
-    }
-    Serial.println("SUCCESS - SD card initialized.");
-    // check for index.htm file
-    if (!SD.exists("index.htm")) {
-        Serial.println("ERROR - Can't find index.htm file!");
-        return;  // can't find index file
-    }
-    Serial.println("SUCCESS - Found index.htm file.");
-    
 
    // start the Ethernet connection and the server:
     Ethernet.init(Pin_CSn_ETH);
@@ -141,6 +126,22 @@ void setup()
 
 
 void setup1() {    // Split for MultiThread Feb 2, 202F   V2.2
+
+    Serial.begin(9600);       // for debugging
+
+    // initialize SD card
+    Serial.println("Initializing SD card...");
+    if (!SD.begin(Pin_CSn_SD, SD_SCK_HZ(12500000), SPI1)) {  // Added 2023
+        Serial.println("ERROR - SD card initialization failed!");
+        return;    // init failed
+    }
+    Serial.println("SUCCESS - SD card initialized.");
+    // check for index.htm file
+    if (!SD.exists("index.htm")) {
+        Serial.println("ERROR - Can't find index.htm file!");
+        return;  // can't find index file
+    }
+    Serial.println("SUCCESS - Found index.htm file.");
   
 }
 

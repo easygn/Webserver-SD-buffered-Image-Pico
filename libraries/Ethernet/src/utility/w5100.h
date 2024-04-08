@@ -19,7 +19,7 @@
 
 // Safe for all chips
 //#define SPI_ETHERNET_SETTINGS SPISettings(14000000, MSBFIRST, SPI_MODE0)
-#define SPI_ETHERNET_SETTINGS SPISettings(15000000, MSBFIRST, SPI_MODE0)   // For Sync Core frequency 17 Mar 202F, by Easygn
+#define SPI_ETHERNET_SETTINGS SPISettings(12500000, MSBFIRST, SPI_MODE0)   // For Sync Core frequency 17 Mar 202F, by Easygn
 
 
 // Safe for W5200 and W5500, but too fast for W5100
